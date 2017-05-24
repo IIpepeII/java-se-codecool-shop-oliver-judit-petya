@@ -1,9 +1,12 @@
 package com.codecool.shop.dao.jdbcImplementation;
 
+import com.codecool.shop.controller.ProductController;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +15,8 @@ import java.util.List;
 
 public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
 
-
     private static ProductDaoJDBC instance = null;
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     private SupplierDaoJDBC supplierDaoJdbc = SupplierDaoJDBC.getInstance();
     private ProductCategoryDaoJDBC productCategoryDaoJdbc = ProductCategoryDaoJDBC.getInstance();
@@ -51,6 +54,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
         } catch (SQLException e) {
             e.getStackTrace();
         }
+        logger.info("New product: {} now exists in the database.", product.getName());
     }
 
     public Product find(int id) {
@@ -81,6 +85,9 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
     }
 
     public void remove(int id) {
+        if (getAll().size() > 0 && getAll().contains(find(id))) {
+            logger.info("Product {} will be removed from Database.", find(id).getName());
+        }
         remove(id, "Product");
     }
 
@@ -92,6 +99,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.info("Product table is empty.");
     }
 
     public List<Product> getAll() {

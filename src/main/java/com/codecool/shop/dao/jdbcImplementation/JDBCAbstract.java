@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 abstract class JDBCAbstract {
 
     private static ArrayList<String> dbProps = JDBCConnectPropParser.connectProps();

@@ -6,6 +6,8 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.jdbcImplementation.ProductCategoryDaoJDBC;
 import com.codecool.shop.dao.jdbcImplementation.ProductDaoJDBC;
 import com.codecool.shop.dao.jdbcImplementation.SupplierDaoJDBC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,11 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProductController {
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private static SupplierDao productSupplierDataStore = SupplierDaoJDBC.getInstance();
     private static ProductDao productDataStore = ProductDaoJDBC.getInstance();
     private static ProductCategoryDao productCategoryDataStore = ProductCategoryDaoJDBC.getInstance();
 
     public static ModelAndView renderProducts(Request req, Response res) {
+        logger.info("GET request - URL: '/' or '/index'");
         req.session(true);
 
         Map indexRenderParams = paramFiller(req);

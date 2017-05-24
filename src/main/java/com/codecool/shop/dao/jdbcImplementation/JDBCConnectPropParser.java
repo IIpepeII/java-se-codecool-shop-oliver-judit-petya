@@ -1,5 +1,9 @@
 package com.codecool.shop.dao.jdbcImplementation;
 
+import com.codecool.shop.controller.ProductController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class JDBCConnectPropParser {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     public static ArrayList<String> connectProps() {
         Properties prop = new Properties();
@@ -26,6 +32,8 @@ public class JDBCConnectPropParser {
             proplist.add(prop.getProperty("database"));
             proplist.add(prop.getProperty("username"));
             proplist.add(prop.getProperty("password"));
+
+            logger.info("Connect to database: {}, username: {}", prop.getProperty("database"), prop.getProperty("username"));
 
             return proplist;
 

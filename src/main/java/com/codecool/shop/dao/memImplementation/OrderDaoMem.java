@@ -1,13 +1,16 @@
 package com.codecool.shop.dao.memImplementation;
 
+import com.codecool.shop.controller.ProductController;
 import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.model.Order;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDaoMem implements OrderDao {
-
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private static OrderDaoMem instance = null;
     private List<Order> DATA = new ArrayList<>();
 
@@ -32,6 +35,7 @@ public class OrderDaoMem implements OrderDao {
     public void add(Order order) {
         order.setId(DATA.size() + 1);
         DATA.add(order);
+        logger.info("Order Id:{} now exists in the memory. ", order.getId());
     }
 
     @Override
@@ -41,6 +45,7 @@ public class OrderDaoMem implements OrderDao {
 
     @Override
     public void remove(int id) {
+        logger.info("Order Id:{} will be removed from memory.", find(id).getId());
         DATA.remove(find(id));
     }
 }
