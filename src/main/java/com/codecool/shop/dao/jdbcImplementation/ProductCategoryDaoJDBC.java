@@ -29,7 +29,7 @@ public class ProductCategoryDaoJDBC extends JDBCAbstract implements ProductCateg
 
     /**
      * This method checks if ProductCategoryDaoJDBC has an instance. If not it instantiate one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return ProductCategoryDaoJDBC
      */
     public static ProductCategoryDaoJDBC getInstance() {
@@ -111,7 +111,7 @@ public class ProductCategoryDaoJDBC extends JDBCAbstract implements ProductCateg
     /**
      * This method executes a query to find all product categories in the table, then
      * collects every new ProductCategory object created by the datas in a List.
-     * @return List<ProductCategory> object with every newly created ProductCategory object
+     * @return List of ProductCategory objects with every newly created ProductCategory object
      */
     public List<ProductCategory> getAll() {
         String query = "SELECT * FROM ProductCategory";

@@ -26,7 +26,7 @@ public class OrderDaoMem implements OrderDao {
 
     /**
      * This method checks if OrderDaoMem has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return OrderDaoMem
      */
     public static OrderDaoMem getInstance() {
@@ -37,8 +37,8 @@ public class OrderDaoMem implements OrderDao {
     }
 
     /**
-     * This method returns DATA container.
-     * @return List<Order>
+     * This method gives back the DATA container.
+     * @return List of Order objects
      */
     @Override
     public List<Order> getAll() {
@@ -58,7 +58,7 @@ public class OrderDaoMem implements OrderDao {
 
     /**
      * This method find a Order object in the DATA container by the given Id
-     * then returns it.
+     * then gives it back.
      * @param id to find the Order by its Id in the DATA container
      * @return Order
      */

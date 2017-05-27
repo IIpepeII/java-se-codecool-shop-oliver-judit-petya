@@ -28,7 +28,7 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
 
     /**
      * This method checks if ProductCategoryDaoMem has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return ProductCategoryDaoMem
      */
     public static ProductCategoryDaoMem getInstance() {
@@ -51,7 +51,7 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
 
     /**
      * This method find a ProductCategory object in the DATA container by the given Id
-     * then returns it.
+     * then gives it back.
      * @param id to find the ProductCategory by its Id in the DATA container
      * @return ProductCategory
      */
@@ -73,8 +73,8 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
     }
 
     /**
-     * This method returns DATA container.
-     * @return List<ProductCategory>
+     * This method gives back the DATA container.
+     * @return List of ProductCategory objects
      */
     @Override
     public List<ProductCategory> getAll() {

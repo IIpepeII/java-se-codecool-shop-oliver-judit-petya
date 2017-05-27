@@ -27,7 +27,7 @@ public class SupplierDaoMem implements SupplierDao {
 
     /**
      * This method checks if supplierDaoMem has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return SupplierDaoMem
      */
     public static SupplierDaoMem getInstance() {
@@ -50,7 +50,7 @@ public class SupplierDaoMem implements SupplierDao {
 
     /**
      * This method find a Supplier object in the DATA container by the given Id
-     * then returns it.
+     * then gives it back.
      * @param id to find the Supplier by its Id in the DATA container
      * @return Supplier
      */
@@ -79,8 +79,8 @@ public class SupplierDaoMem implements SupplierDao {
     }
 
     /**
-     * This method returns DATA container.
-     * @return List<Supplier>
+     * This method gives back the DATA container.
+     * @return List of Supplier objects
      */
     @Override
     public List<Supplier> getAll() {

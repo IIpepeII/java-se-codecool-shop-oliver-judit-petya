@@ -33,7 +33,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
 
     /**
      * This method checks if ProductDaoJDBC has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return ProductDaoJDBC
      */
     public static ProductDaoJDBC getInstance() {
@@ -136,7 +136,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
     /**
      * This method executes a query to find all products in the table, then
      * collects every new Product object created by the datas in a List.
-     * @return List<Product> object with every newly created Product object
+     * @return List of Product objects with every newly created Product object
      */
     public List<Product> getAll() {
         String query = "SELECT * FROM Product;";
@@ -172,7 +172,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
      * then collects every new Product object created by the datas in a List.
      * @param supplier to find products with the reference to the Supplier table record
      *                 with similar fields to the given Supplier object
-     * @return List<Product> object with every newly created Product object
+     * @return List of Product objects with every newly created Product object
      */
     public List<Product> getBy(Supplier supplier) {
         String query = "SELECT * FROM Product WHERE supplier_id = ?;";
@@ -209,7 +209,7 @@ public class ProductDaoJDBC extends JDBCAbstract implements ProductDao {
      * then collects every new Product object created by the datas in a List.
      * @param productCategory to find products with the reference to the ProductCategory table record
      *                 with similar fields to the given ProductCategory object
-     * @return List<Product> object with every newly created Product object
+     * @return List of Product objects with every newly created Product object
      */
     public List<Product> getBy(ProductCategory productCategory) {
         String query = "SELECT * FROM Product WHERE product_category_id = ?;";

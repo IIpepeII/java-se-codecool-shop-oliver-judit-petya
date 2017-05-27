@@ -30,7 +30,7 @@ public class ProductDaoMem implements ProductDao {
 
     /**
      * This method checks if ProductDaoMem has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return ProductDaoMem
      */
     public static ProductDaoMem getInstance() {
@@ -52,7 +52,7 @@ public class ProductDaoMem implements ProductDao {
 
     /**
      * This method find a Product object in the DATA container by the given Id
-     * then returns it.
+     * then gives it back.
      * @param id to find the Product by its Id in the DATA container
      * @return Product
      */
@@ -82,8 +82,8 @@ public class ProductDaoMem implements ProductDao {
     }
 
     /**
-     * This method returns DATA container.
-     * @return List<Product>
+     * This method gives back the DATA container.
+     * @return List of Product objects
      */
     @Override
     public List<Product> getAll() {
@@ -91,10 +91,10 @@ public class ProductDaoMem implements ProductDao {
     }
 
     /**
-     * This method returns Products have references to the given
+     * This method gives back Products have references to the given
      * Supplier object, from DATA container.
      * @param supplier Supplier object with reference to products
-     * @return List<Product>
+     * @return List of Product objects
      */
     @Override
     public List<Product> getBy(Supplier supplier) {
@@ -102,10 +102,10 @@ public class ProductDaoMem implements ProductDao {
     }
 
     /**
-     * This method returns Products have references to the given
+     * This method gives back Products have references to the given
      * ProductCategory object, from DATA container.
      * @param productCategory ProductCategory object with reference to products
-     * @return List<Product>
+     * @return List of Product objects
      */
     @Override
     public List<Product> getBy(ProductCategory productCategory) {

@@ -28,7 +28,7 @@ public class SupplierDaoJDBC extends JDBCAbstract implements SupplierDao {
 
     /**
      * This method checks if SupplierDaoJDBC has an instance. If not, it instantiates one,
-     * and fill the instance field with it, if it already has one, returns that one.
+     * and fill the instance field with it, if it already has one, gives it back.
      * @return SupplierDaoJDBC
      */
     public static SupplierDaoJDBC getInstance() {
@@ -109,7 +109,7 @@ public class SupplierDaoJDBC extends JDBCAbstract implements SupplierDao {
     /**
      * This method executes a query to find all suppliers in the table, then
      * collects every new Supplier object created by the datas in a List.
-     * @return List<Supplier> object with every newly created Supplier object
+     * @return List of Supplier objects with every newly created Supplier object
      */
     public List<Supplier> getAll() {
         String query = "SELECT * FROM supplier";
