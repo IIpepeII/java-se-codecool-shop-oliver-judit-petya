@@ -9,17 +9,27 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This singleton class collects every Supplier objects in its DATA container.
+ * Through its methods we can handle our Supplier objects.
+ */
 public class SupplierDaoMem implements SupplierDao {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private static SupplierDaoMem instance = null;
     private List<Supplier> DATA = new ArrayList<>();
 
-    /* A private Constructor prevents any other class from instantiating.
+    /**
+     * This private constructor method prevents any other class from instantiating.
      */
     private SupplierDaoMem() {
     }
 
+    /**
+     * This method checks if supplierDaoMem has an instance. If not, it instantiates one,
+     * and fill the instance field with it, if it already has one, returns that one.
+     * @return SupplierDaoMem
+     */
     public static SupplierDaoMem getInstance() {
         if (instance == null) {
             instance = new SupplierDaoMem();
@@ -27,6 +37,10 @@ public class SupplierDaoMem implements SupplierDao {
         return instance;
     }
 
+    /**
+     * Add the given Supplier object to the DATA container.
+     * @param supplier Supplier object for DATA container
+     */
     @Override
     public void add(Supplier supplier) {
         supplier.setId(DATA.size() + 1);
@@ -34,11 +48,20 @@ public class SupplierDaoMem implements SupplierDao {
         logger.info("New supplier: {} now exists int the memory.", supplier.getName());
     }
 
+    /**
+     * This method find a Supplier object in the DATA container by the given Id
+     * then returns it.
+     * @param id to find the Supplier by its Id in the DATA container
+     * @return Supplier
+     */
     @Override
     public Supplier find(int id) {
         return DATA.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
     }
 
+    /**
+     * This method removes a Supplier from DATA container by its Id.
+     * @param id to find the Supplier by its Id in the DATA container     */
     @Override
     public void remove(int id) {
         if (DATA.size() > 0 && DATA.contains(find(id))) {
@@ -47,11 +70,18 @@ public class SupplierDaoMem implements SupplierDao {
         DATA.remove(find(id));
     }
 
+    /**
+     * This method purges every Supplier from the DATA container.
+     */
     public void removeAll() {
         DATA.clear();
         logger.info("Every supplier deleted from the memory");
     }
 
+    /**
+     * This method returns DATA container.
+     * @return List<Supplier>
+     */
     @Override
     public List<Supplier> getAll() {
         return DATA;
